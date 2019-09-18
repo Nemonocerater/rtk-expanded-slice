@@ -1,0 +1,24 @@
+{
+  "name": "rsk-expanded-slice",
+  "version": "0.1.0",
+  "description": "generates setters and selectors for slices",
+  "repository": "https://github.com/Nemonocerater/rsk-expanded-slice",
+  "main": "index.js",
+  "author": "joshua40harris@gmail.com",
+  "license": "ISC",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "peerDependencies": {
+    "redux-starter-kit": "^0.6.3"
+  },
+  "devDependencies": {
+    "redux-starter-kit": "^0.6.3",
+    "jest": "^24.9.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "index.js"
+    ]
+  }
+}
