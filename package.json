@@ -1,7 +1,7 @@
 {
   "name": "rsk-expanded-slice",
-  "version": "0.1.0",
-  "description": "generates setters and selectors for slices",
+  "version": "1.0.0",
+  "description": "Generates setters and selectors for slices",
   "repository": "https://github.com/Nemonocerater/rsk-expanded-slice",
   "main": "index.js",
   "author": "joshua40harris@gmail.com",
