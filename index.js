@@ -50,3 +50,6 @@ module.exports = {
 	default: createCustomSlice,
 	ucfl
 };
+
+// Need this to make the default export importable using `import x from '<this-package>'`
+Object.defineProperty(module.exports, '__esModule', { value: true });
