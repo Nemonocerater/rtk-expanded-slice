@@ -10,10 +10,10 @@
     "test": "jest --coverage"
   },
   "peerDependencies": {
-    "redux-starter-kit": "^0.6.3"
+    "@reduxjs/toolkit": "^1.2.5"
   },
   "devDependencies": {
-    "redux-starter-kit": "^0.6.3",
+    "@reduxjs/toolkit": "^1.2.5",
     "jest": "^24.9.0"
   },
   "jest": {

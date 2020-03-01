@@ -1,4 +1,5 @@
-const { createSlice } = require('redux-starter-kit');
+//const { createSlice } = require('redux-toolkit');
+const { createSlice } = require('@reduxjs/toolkit');
 
 const ucfl = (s) => (s && typeof s === 'string') ? s.charAt(0).toUpperCase() + s.slice(1) : '';
 
@@ -11,17 +12,17 @@ const createSetters = (initialState) => {
 	return setters;
 };
 
-const createSelectors = (slice, initialState) => {
+const createSelectors = (name, initialState) => {
 	let selectors = {};
 
-	const getSliceName = (state) => (state && state[slice]) ? state[slice] : {};
-	if (slice) {
+	const getSliceName = (state) => (state && state[name]) ? state[name] : {};
+	if (name) {
 		selectors = { getSliceName };
 	}
 
 	for (let data in initialState) {
 		const name = `select${ucfl(data)}`;
-		if (slice) {
+		if (name) {
 			selectors[name] = (state) => getSliceName(state)[data];
 		} else {
 			selectors[name] = (state) => state[data];
@@ -41,7 +42,7 @@ const createCustomSlice = (config) => {
 	const slice = createSlice(config);
 
 	// Generate selectors for initial state values
-	slice.selectors = createSelectors(config.slice, config.initialState);
+	slice.selectors = createSelectors(config.name, config.initialState);
 
 	return slice;
 };
