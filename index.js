@@ -37,7 +37,7 @@ const createCustomSlice = (config) => {
 
 	// Add setters to the reducer from initial state values
 	const setters = createSetters(config.initialState);
-	config.reducers = { ...config.reducers, ...setters };
+	config.reducers = { ...setters, ...config.reducers };
 
 	const slice = createSlice(config);
 

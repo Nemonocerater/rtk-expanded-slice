@@ -40,11 +40,15 @@ describe('createSlice', () => {
       field: 'field',
       awesomeProp: 'awesomeProp',
       awesomeField: 'awesomeField',
+      overwriteSetter: 'field',
     };
     const reducers = {
       doAwesome: (state, action) => {
         state.awesomeProp = true;
         state.awesomeField = true;
+      },
+      setOverwriteSetter: (state, action) => {
+      	state.overwriteSetter = `custom - ${action.payload}`;
       },
     };
 
@@ -61,7 +65,7 @@ describe('createSlice', () => {
 
     describe('actionObject', () => {
       it('should have all setters and reducer functions', () => {
-        expect(Object.keys(actions).length).toBe(5);
+        expect(Object.keys(actions).length).toBe(6);
         const {
           setProp,
           setField,
@@ -116,6 +120,20 @@ describe('createSlice', () => {
         testActionInReducer('awesomeField');
       });
 
+	  it('should not overwrite custom written setter actions', () => {
+	  	const payload = 'Payload';
+	  	const action = actions.setOverwriteSetter(payload);
+
+	  	expect(action).toEqual({
+	  	  type: actions.setOverwriteSetter.type,
+	  	  payload,
+		});
+
+		expect(state.overwriteSetter).toBe('field');
+		state = sliceData.reducer(state, action);
+		expect(state.overwriteSetter).toBe(`custom - ${payload}`);
+	  });
+
       it('should properly doAwesome', () => {
         const action = actions.doAwesome();
         expect(action).toEqual({
@@ -142,6 +160,7 @@ describe('createSlice', () => {
         selectField,
         selectAwesomeProp,
         selectAwesomeField,
+	  	selectOverwriteSetter,
       } = selectors;
 
       const immuState = reducer(undefined, { type: "@@INIT" });
@@ -150,12 +169,13 @@ describe('createSlice', () => {
       };
 
       it('should have all selectors set up properly', () => {
-        expect(Object.keys(selectors).length).toBe(5);
+        expect(Object.keys(selectors).length).toBe(6);
         expect(typeof getSliceName).toEqual('function');
         expect(typeof selectProp).toEqual('function');
         expect(typeof selectField).toEqual('function');
         expect(typeof selectAwesomeProp).toEqual('function');
         expect(typeof selectAwesomeField).toEqual('function');
+        expect(typeof selectOverwriteSetter).toEqual('function');
       });
 
       it('should getSliceName', () => {

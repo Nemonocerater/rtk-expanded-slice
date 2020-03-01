@@ -1,6 +1,6 @@
 {
   "name": "rtk-expanded-slice",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generates setters and selectors for slices",
   "repository": "https://github.com/Nemonocerater/rtk-expanded-slice",
   "main": "index.js",
